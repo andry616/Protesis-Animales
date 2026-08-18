@@ -1,0 +1,46 @@
+# CI base — valida la estructura de la metodología en cada PR.
+# Ajusta/añade pasos según el tipo de proyecto (tests, lint, build).
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  validar-estructura:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verificar andamiaje de metodología
+        run: |
+          set -e
+          faltan=0
+          for f in CLAUDE.md METHODOLOGY.md docs/STATUS.md docs/MAP.md \
+                   .claude/methodology.version registry/claims.json; do
+            if [ ! -e "$f" ]; then echo "FALTA: $f"; faltan=1; fi
+          done
+          if [ "$faltan" = "1" ]; then
+            echo "Estructura de metodología incompleta."; exit 1
+          fi
+          echo "Estructura OK."
+
+      - name: Comprobar que no se suben secretos evidentes
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$|\.pem$|\.key$'; then
+            echo "Posible secreto versionado."; exit 1
+          fi
+          echo "Sin secretos evidentes."
+
+  # proyecto:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Instalar
+  #       run: <COMANDO>
+  #     - name: Pruebas
+  #       run: <COMANDO>
+  #     - name: Lint
+  #       run: <COMANDO>

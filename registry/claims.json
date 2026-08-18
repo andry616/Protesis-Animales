@@ -1,0 +1,17 @@
+{
+  "$schema-nota": "Registro de qué archivos/carpetas reclama cada topic activo. Lo revisa el agente 'guardian' para detectar colisiones. Un topic debe declarar aquí lo que planea tocar.",
+  "version": 1,
+  "topics": [
+    {
+      "topic": "_ejemplo",
+      "subproyecto": "(raíz)",
+      "tipo": "research",
+      "madurez": "spike",
+      "estado": "pausado",
+      "rama": "research/ejemplo",
+      "reclama": [
+        "src/ejemplo/"
+      ]
+    }
+  ]
+}

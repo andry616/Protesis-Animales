@@ -1,0 +1,12 @@
+{
+  "$schema-nota": "Directorio de proyectos (address book del buzón). Mapea cada proyecto a su repo y su inbox para que el agente 'buzon' sepa a dónde entregar mensajes. Mantén copias coincidentes en los proyectos que se comunican entre sí.",
+  "version": 1,
+  "proyectos": [
+    {
+      "nombre": "Protesis-Animales",
+      "repo": "andry616/Protesis-Animales",
+      "buzon_inbox": ".buzon/inbox/",
+      "descripcion": "Este proyecto."
+    }
+  ]
+}
