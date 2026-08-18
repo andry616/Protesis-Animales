@@ -1,0 +1,28 @@
+# Secretos — nunca versionar
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials*.json
+
+# Dependencias / build
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Temporales / editor
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Buzón: los mensajes procesados no se versionan (ruido); ajusta si quieres historial
+.buzon/inbox/procesados/
